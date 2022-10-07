@@ -1,0 +1,18 @@
+pipeline {
+    agent {
+        label 'MVN-3'
+    }
+    stages {
+        stage('clone') {
+            steps {
+                git url: "https://github.com/GUDAPATIVENKATESH/openmrs-core.git" ,
+                    branch: "SPRINT_1_DEV"
+            }
+        }
+        stage('build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+}
